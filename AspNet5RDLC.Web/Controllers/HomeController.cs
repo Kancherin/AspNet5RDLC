@@ -48,13 +48,34 @@ namespace AspNet5RDLC.Web.Controllers
                 dt.Rows.Add(i, "Empleado " + i, "Male", "Administración Pública", "Desarrollo");
             }
 
-            var filePath = $"{_webHostEnvironment.WebRootPath}\\Reports\\rptEmpleados.rdl";
-            var local = new LocalReport(filePath);
+            //var filePath = $"{_webHostEnvironment.WebRootPath}\\Reports\\rptEmpleados.rdl";
+            //var local = new LocalReport(filePath);
+            //local.AddDataSource("DataSet1", dt);
+            //var rpt = local.Execute(RenderType.Pdf);
 
-            local.AddDataSource("DataSet1", dt);
+            var _source = new Dictionary<string, object>
+            {
+                { "DataSet1", dt }
+            };
 
-            var rpt = local.Execute(RenderType.Pdf);
-            return File(rpt.MainStream, "application/pdf");
+            var _params = new Dictionary<string, string>
+            {
+                { "nom_empresa", "Ministerio de Salud" }
+            };
+
+            //Con un DataSource Creado en el Reporte
+            //var b = AspNet5RDLC.Web.AppCode.RDL
+            //    .Create($"{_webHostEnvironment.WebRootPath}\\Reports\\rptEmpleados.rdl", _source);
+
+            //Con Datos de una consulta a DB con Cadena de conexion
+            //var b = AspNet5RDLC.Web.AppCode.RDL
+            //    .Create($"{_webHostEnvironment.WebRootPath}\\Reports\\rptEmpleados.rdl", "Data Source=.;Initial Catalog=EmpleadosDB;Uid=desarrollo;Pwd=123456;");
+
+            //Con Datos de una consulta a DB con Cadena de conexion + Parametros
+            var b = AspNet5RDLC.Web.AppCode.RDL
+                .Create($"{_webHostEnvironment.WebRootPath}\\Reports\\rptEmpleados.rdl", "Data Source=.;Initial Catalog=EmpleadosDB;Uid=desarrollo;Pwd=123456;", _params);
+
+            return File(b, "application/pdf");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

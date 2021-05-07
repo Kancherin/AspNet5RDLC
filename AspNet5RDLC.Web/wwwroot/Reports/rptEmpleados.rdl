@@ -75,7 +75,7 @@
             <Top>0mm</Top>
             <Left>0.58208cm</Left>
             <Height>12.7mm</Height>
-            <Width>178.59375mm</Width>
+            <Width>98.16043mm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -493,6 +493,41 @@
               </Border>
             </Style>
           </Tablix>
+          <Textbox Name="nom_empresa">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Parameters!nom_empresa.Value</Value>
+                    <Style>
+                      <FontStyle>Italic</FontStyle>
+                      <FontSize>14pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>nom_empresa</rd:DefaultName>
+            <Top>0.17639cm</Top>
+            <Left>11.45942cm</Left>
+            <Height>0.83812cm</Height>
+            <Width>6.98204cm</Width>
+            <ZIndex>2</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
         </ReportItems>
         <Height>28.31042mm</Height>
         <Style>
@@ -567,10 +602,25 @@
       </Page>
     </ReportSection>
   </ReportSections>
+  <ReportParameters>
+    <ReportParameter Name="nom_empresa">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>nom_empresa</Prompt>
+    </ReportParameter>
+  </ReportParameters>
   <ReportParametersLayout>
     <GridLayoutDefinition>
       <NumberOfColumns>4</NumberOfColumns>
       <NumberOfRows>2</NumberOfRows>
+      <CellDefinitions>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>nom_empresa</ParameterName>
+        </CellDefinition>
+      </CellDefinitions>
     </GridLayoutDefinition>
   </ReportParametersLayout>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
